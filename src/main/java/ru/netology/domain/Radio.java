@@ -1,8 +1,18 @@
 package ru.netology.domain;
 
 public class Radio {
-    private int curChannel;
-    private int curVolume;
+    private int curChannel = 0;
+    private int curVolume = 0;
+    private int maxChannel = 10;
+
+    public Radio() {
+    }
+
+    public Radio(int curChannel, int curVolume, int maxChannel) {
+        this.curChannel = curChannel;
+        this.curVolume = curVolume;
+        this.maxChannel = maxChannel;
+    }
 
     public int getCurChannel() {
         return curChannel;
@@ -10,6 +20,10 @@ public class Radio {
 
     public int getCurVolume() {
         return curVolume;
+    }
+
+    public int getMaxChannel() {
+        return maxChannel;
     }
 
     public void setCurChannel(int newCurChannel) {
@@ -21,7 +35,7 @@ public class Radio {
     }
 
     public int incChannel() {
-        if (getCurChannel() < 9) {
+        if (getCurChannel() < maxChannel) {
             setCurChannel(getCurChannel() + 1);
         } else {
             setCurChannel(0);
@@ -33,7 +47,7 @@ public class Radio {
         if (getCurChannel() > 0) {
             setCurChannel(getCurChannel() - 1);
         } else {
-            setCurChannel(9);
+            setCurChannel(maxChannel);
         }
         return getCurChannel();
     }
@@ -57,7 +71,7 @@ public class Radio {
     }
 
     public int setNewChannel(int newChannel) {
-        if (newChannel >= 0 && newChannel < 10) {
+        if (newChannel >= 0 && newChannel <= maxChannel) {
             setCurChannel(newChannel);
         }
         return getCurChannel();
