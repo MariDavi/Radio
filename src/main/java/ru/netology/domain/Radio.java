@@ -4,6 +4,7 @@ public class Radio {
     private int curChannel = 0;
     private int curVolume = 0;
     private int maxChannel = 10;
+    private int lastChannel;
 
     public Radio() {
     }
@@ -12,6 +13,7 @@ public class Radio {
         this.curChannel = curChannel;
         this.curVolume = curVolume;
         this.maxChannel = maxChannel;
+        this.lastChannel = maxChannel -1;
     }
 
     public int getCurChannel() {
@@ -22,8 +24,8 @@ public class Radio {
         return curVolume;
     }
 
-    public int getMaxChannel() {
-        return maxChannel;
+    public int getLastChannel() {
+        return lastChannel;
     }
 
     public void setCurChannel(int newCurChannel) {
@@ -35,7 +37,7 @@ public class Radio {
     }
 
     public int incChannel() {
-        if (getCurChannel() < maxChannel) {
+        if (getCurChannel() < lastChannel) {
             setCurChannel(getCurChannel() + 1);
         } else {
             setCurChannel(0);
@@ -47,7 +49,7 @@ public class Radio {
         if (getCurChannel() > 0) {
             setCurChannel(getCurChannel() - 1);
         } else {
-            setCurChannel(maxChannel);
+            setCurChannel(lastChannel);
         }
         return getCurChannel();
     }
@@ -71,7 +73,7 @@ public class Radio {
     }
 
     public int setNewChannel(int newChannel) {
-        if (newChannel >= 0 && newChannel <= maxChannel) {
+        if (newChannel >= 0 && newChannel <= lastChannel) {
             setCurChannel(newChannel);
         }
         return getCurChannel();

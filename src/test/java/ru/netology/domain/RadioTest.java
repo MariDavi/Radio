@@ -12,7 +12,7 @@ class RadioTest {
 
     @Test
     public void shouldIncChannelInMax() {
-        radio.setNewChannel(radio.getMaxChannel());
+        radio.setNewChannel(radio.getLastChannel());
         int actual = radio.incChannel();
         int expected = 0;
         assertEquals(expected, actual);
@@ -30,7 +30,7 @@ class RadioTest {
     public void shouldDecChannelInMin() {
         radio.setCurChannel(0);
         int actual = radio.decChannel();
-        int expected = radio.getMaxChannel();
+        int expected = radio.getLastChannel();
         assertEquals(expected, actual);
     }
 
